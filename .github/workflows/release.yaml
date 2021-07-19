@@ -27,7 +27,7 @@ jobs:
 
       - name: export client cert ssh-key
         run: |
-          cat ${{secrets.PASSWORD }} > ~/pass.pem
+          echo ${{secrets.PASSWORD }} > ~/pass.pem
           export PASSWORD=~/pass.pem
           echo ${{secrets.SSH_KEY }} > ~/.ssh/id_rsa.pub
 
