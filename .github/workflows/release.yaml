@@ -12,10 +12,18 @@ jobs:
     env:
       TF_IN_AUTOMATION: true
     steps:
-      - uses: actions/checkout@v2
-      - uses: hashicorp/setup-terraform@v1
-      - uses: extractions/setup-just@v1
-      - uses:  azure/CLI@v1
+        
+      - name: chekcout
+        uses: actions/checkout@v2
+  
+      - name: setup terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: setup just 
+        uses: extractions/setup-just@v1
+        
+      - name: install az cli   
+        uses:  azure/CLI@v1
 
       - name: export client cert ssh-key
         run: |
