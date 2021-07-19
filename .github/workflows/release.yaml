@@ -1,0 +1,43 @@
+name: Deploy
+
+on:
+ push:
+  branches:
+  - ["master"]
+
+jobs:
+   deploy:
+     runs-on: ubuntu-latest
+     env:
+      TF_IN_AUTOMATION: true
+     steps:
+        - uses: actions/checkout@v2
+        - uses: hashicorp/setup-terraform@v1
+        - uses: extractions/setup-just@v1
+        - uses:  azure/CLI@v1
+
+        - name: export client cert
+          run: |
+            cat ${{secrets.PASSWORD }} > ~/pass.pem
+            export PASSWORD=~/pass.pem
+
+        - name: login
+          env:
+            APP_ID: ${{ secrets.APP_ID }}
+            USERNAME: ${{secrets.USERNAME}}
+            PASSWORD: ${{ secrets.PASSWORD }}
+            TENANT_ID: ${{secrets.TENANT_ID}}
+          run: az login --service-principal --username $APP_ID --password $PASSWORD --tenant $TENANT_ID
+        
+         
+        - name: Init
+          run: just init
+        
+        - name: Plan
+          run: just plan
+      
+        - name: Apply 
+          run: just apply
+         
+
+
