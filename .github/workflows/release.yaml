@@ -1,9 +1,9 @@
 name: Deploy
 
 on:
- push:
-  branches:
-  - ["master"]
+  push:
+    branches:
+    - ["master"]
 
 jobs:
    deploy:
@@ -16,10 +16,11 @@ jobs:
         - uses: extractions/setup-just@v1
         - uses:  azure/CLI@v1
 
-        - name: export client cert
+        - name: export client cert ssh-key
           run: |
             cat ${{secrets.PASSWORD }} > ~/pass.pem
             export PASSWORD=~/pass.pem
+            echo ${{secrets.SSH_KEY }} > ~/.ssh/id_rsa.pub
 
         - name: login
           env:
