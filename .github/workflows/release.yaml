@@ -23,7 +23,7 @@ jobs:
         uses: extractions/setup-just@v1
 
       - name: install az cli   
-        uses:  azure/CLI@v1
+        run:  pip install azure-cli
 
       - name: export client cert ssh-key
         run: |
