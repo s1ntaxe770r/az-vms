@@ -5,14 +5,8 @@ terraform {
       version = "2.68.0"
     }
   }
-  backend "azurerm" {
-        resource_group_name  = azurerm_resource_group.rg.name
-        storage_account_name = "demo-state"
-        container_name       = "tstate"
-        key                  = "terraform.tfstate"
-    }
-}
 
+}
 provider "azurerm" {
   features {}
 }
