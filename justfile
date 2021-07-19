@@ -12,5 +12,16 @@ assign sp_name:
 
 sp_login:
 	az login --service-principal --username $APP_ID --tenant $TENANT_ID --password $CERT
+
+
+init:
+	terraform init 
+
+plan: 
+	terraform plan input=false -out=tfplan
+
+apply:
+	terraform apply -input=false tfplan
+
    
 
