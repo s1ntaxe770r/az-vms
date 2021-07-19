@@ -26,7 +26,12 @@ jobs:
         run:  pip install azure-cli
 
       - name: export client cert ssh-key
-        run: cat "${{secrets.PASSWORD }}" > ~/pass.pem
+        run: |
+          cat << EOF > ~/pass.pem
+          ${{secrets.PASSWORD}}
+          EOF
+          export PASSWORD=~/pass.pem
+
 
       - name: login
         env:
