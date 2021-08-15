@@ -28,3 +28,8 @@ variable "tenant_id" {
 #   type = string
 #   default = "~/.ssh/id_rsa.pub"
 # }
+
+
+variable "admin_pass" {
+  type = string
+}
