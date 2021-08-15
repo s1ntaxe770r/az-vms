@@ -24,7 +24,7 @@ variable "tenant_id" {
   type = string
 }
 
-variable "ssh_key" {
-  type = string
-  default = "~/.ssh/id_rsa.pub"
-}
+# variable "ssh_key" {
+#   type = string
+#   default = "~/.ssh/id_rsa.pub"
+# }
