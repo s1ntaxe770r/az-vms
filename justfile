@@ -13,7 +13,7 @@ sp_login:
 
 # initialize terraform backend
 init:
-	terraform init input=false
+	terraform init 
 
 # create a plan
 plan:
