@@ -37,6 +37,7 @@ jobs:
           mkdir -p ~/.ssh/
           touch ~/.ssh/id_rsa.pub
           echo ${{secrets.SSH-KEY}} > ~/.ssh/id_rsa.pub
+          pwd && ls
 
       - name: Init
         run: just init
