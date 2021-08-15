@@ -6,20 +6,18 @@ on:
     - "*"  # run for branches
 jobs:
   deploy:
+    name: all
     runs-on: ubuntu-latest
-    env:
-      TF_IN_AUTOMATION: true
     steps:
-        
       - name: chekcout
         uses: actions/checkout@v2
-  
+        
       - name: setup terraform
         uses: hashicorp/setup-terraform@v1
 
       - name: setup just 
         uses: extractions/setup-just@v1
-
+        
       - name: export client cert ssh-key
         run: |
           cat << EOF > ~/terraform.tfvars
