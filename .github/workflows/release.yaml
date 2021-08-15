@@ -25,7 +25,7 @@ jobs:
           CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
           TENANT_ID: ${{secrets.TENANT_ID}}
         run: |
-          cat << EOF > ~/az-vms/az-vms/terraform.tfvars
+          cat << EOF > ~/az-vms/terraform.tfvars
           $CLIENT_ID
           $SUBSCRIPTION_ID
           $CLIENT_SECRET
