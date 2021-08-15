@@ -17,11 +17,10 @@ init:
 
 # create a plan
 plan:
-	terraform plan -var-file=~/terraform.tfvars -out=tfplan input=false
-
+	terraform plan -out=tfplan 
 # terraform apply 
 apply:
-	terraform apply input=false tfplan
+	terraform apply tfplan
 
 
 # delete service principal
