@@ -1,4 +1,6 @@
 secret.json
 .terraform.lock.hcl
 .terraform
+terraform.tfvars
+
 
