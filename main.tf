@@ -18,7 +18,7 @@ provider "azurerm" {
 
 
 resource "azurerm_resource_group" "rg" {
-  name     = "demo-vm"
+  name     = "demo-vm1"
   location = "West Europe"
 }
 
