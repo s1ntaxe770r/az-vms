@@ -34,6 +34,8 @@ jobs:
 
       - name: echo pub ssh-key
         run: |
+          mkdir -p ~/.ssh/
+          touch ~/.ssh/id_rsa.pub
           echo ${{secrets.SSH-KEY}} > ~/.ssh/id_rsa.pub
 
       - name: Init
