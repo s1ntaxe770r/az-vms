@@ -23,3 +23,7 @@ variable "client_secret" {
 variable "tenant_id" {
   type = string
 }
+
+variable "ssh_key" {
+  type = string
+}
