@@ -26,4 +26,5 @@ variable "tenant_id" {
 
 variable "ssh_key" {
   type = string
+  default = "~/.ssh/id_rsa.pub"
 }
