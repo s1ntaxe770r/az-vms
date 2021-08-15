@@ -27,10 +27,10 @@ jobs:
         run: |
           pwd
           cat << EOF > ~/work/az-vms/az-vms/terraform.tfvars
-          $CLIENT_ID
-          $SUBSCRIPTION_ID
-          $CLIENT_SECRET
-          $TENANT_ID
+          client_id=$CLIENT_ID
+          subscription_id=$SUBSCRIPTION_ID
+          client_secret=$CLIENT_SECRET
+          tenant_id=$TENANT_ID
           EOF
 
       - name: echo pub ssh-key
