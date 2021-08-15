@@ -19,12 +19,17 @@ jobs:
         uses: extractions/setup-just@v1
         
       - name: export client cert ssh-key
+        env: 
+          CLIENT_ID: ${{secrets.CLIENT_ID}}
+          SUBSCRIPTION_ID: ${{secrets.SUBSCRIPTION_ID}}
+          CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
+          TENANT_ID: ${{secrets.TENANT_ID}}
         run: |
           cat << EOF > ~/terraform.tfvars
-          ${{secrets.CLIENT_ID}}
-          ${{secrets.SUBSCRIPTION_ID}}
-          ${{secrets.CLIENT_SECRET}
-          ${{secrets.TENANT_ID}}
+          $CLIENT_ID
+          $SUBSCRIPTION_ID
+          $CLIENT_SECRET
+          $TENANT_ID
           EOF
 
       - name: echo pub ssh-key
