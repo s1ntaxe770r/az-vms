@@ -21,7 +21,7 @@ jobs:
       - name: export client cert ssh-key
         run: |
           cat << EOF > ~/terraform.tfvars
-          ${{ secrets.CLIENT_ID}}
+          ${{secrets.CLIENT_ID}}
           ${{secrets.SUBSCRIPTION_ID}}
           ${{secrets.CLIENT_SECRET}
           ${{secrets.TENANT_ID}}
