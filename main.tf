@@ -37,6 +37,13 @@ resource "azurerm_subnet" "snet" {
   address_prefixes     = ["10.0.2.0/24"]
 
 }
+resource "azurerm_public_ip" "ip" {
+  name                = "pub"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  allocation_method   = "Static"
+}
+
 
 resource "azurerm_network_interface" "nic" {
   name                = "demo-vm-nic"
@@ -47,9 +54,9 @@ resource "azurerm_network_interface" "nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.snet.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.ip.id
   }
 }
-
 
 resource "azurerm_linux_virtual_machine" "vm" {
   name                = "demo-vm"
@@ -75,3 +82,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
 }
+
+data "azurerm_public_ip" "ip" {
+  name                = azurerm_public_ip.ip.name
+  resource_group_name = azurerm_linux_virtual_machine.vm.resource_group_name
+}
+

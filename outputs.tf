@@ -1,3 +1,3 @@
-output "instance_ip" {
-  value = azurerm_linux_virtual_machine.vm.public_ip_address
+output "public_ip_address" {
+  value = data.azurerm_public_ip.ip.ip_address
 }
