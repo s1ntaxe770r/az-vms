@@ -18,12 +18,7 @@ jobs:
       - name: setup just 
         uses: extractions/setup-just@v1
         
-      - name: export client cert ssh-key
-        env: 
-          CLIENT_ID: ${{secrets.CLIENT_ID}}
-          SUBSCRIPTION_ID: ${{secrets.SUBSCRIPTION_ID}}
-          CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
-          TENANT_ID: ${{secrets.TENANT_ID}}
+      - name: export tfvars
         run: |
           pwd
           cat << EOF > ~/work/az-vms/az-vms/terraform.tfvars
@@ -31,15 +26,14 @@ jobs:
           subscription_id="${{secrets.SUBSCRIPTION_ID}}"
           client_secret="${{secrets.CLIENT_SECRET}}"
           tenant_id="${{secrets.TENANT_ID}}"
-          ssh_key="${{secrets.SSH_KEY}}"
+          ssh_key="~/.ssh/id_rsa.pub"
           EOF
 
       - name: echo pub ssh-key
         run: |
           mkdir -p ~/.ssh/
           touch ~/.ssh/id_rsa.pub
-          echo ${{secrets.SSH-KEY}} > ~/.ssh/id_rsa.pub
-          pwd && ls
+          echp ${{secrets.SSH-KEY}} > ~/.ssh/id_rsa.pub
 
       - name: Init
         run: just init
