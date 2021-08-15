@@ -8,4 +8,18 @@ variable "size" {
   default = "Standard_A1_v2"
 }
 
+variable "subscription_id" {
+  type = string
+}
 
+variable "client_id" {
+  type = string
+}
+
+variable "client_secret" {
+  type = string 
+}
+
+variable "tenant_id" {
+  type = string
+}
