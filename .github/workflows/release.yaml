@@ -26,14 +26,13 @@ jobs:
           subscription_id="${{secrets.SUBSCRIPTION_ID}}"
           client_secret="${{secrets.CLIENT_SECRET}}"
           tenant_id="${{secrets.TENANT_ID}}"
-          ssh_key="~/.ssh/id_rsa.pub"
           EOF
 
       - name: echo pub ssh-key
         run: |
           mkdir -p ~/.ssh/
           touch ~/.ssh/id_rsa.pub
-          echo ${{secrets.SSH-KEY}} > ~/.ssh/id_rsa.pub
+          echo ${{secrets.SSH_KEY}} > ~/.ssh/id_rsa.pub
 
       - name: Init
         run: just init
