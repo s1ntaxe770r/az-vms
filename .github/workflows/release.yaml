@@ -29,7 +29,7 @@ jobs:
           cat << EOF > ~/work/az-vms/az-vms/terraform.tfvars
           client_id=$CLIENT_ID
           subscription_id=$SUBSCRIPTION_ID
-          client_secret=$CLIENT_SECRET
+          client_secret="${{secrets.CLIENT_SECRET"
           tenant_id=$TENANT_ID
           EOF
 
